@@ -46,7 +46,7 @@ fi
 
 # Compress all .log files in the specified directory into a tar.gz archive
 echo "Archiving $log_count log files from directory: $LOG_DIR"
-tar -czf "compressed_logs/$archive_name" -C "$LOG_DIR" *.log
+tar -czf "compressed_logs/$archive_name" -C "$LOG_DIR" $(find "$LOG_DIR" -maxdepth 1 -name "*.log" -printf "%f ")
 
 # Check if the archive was created successfully
 if [ $? -eq 0 ]; then
